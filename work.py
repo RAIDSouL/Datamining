@@ -46,7 +46,7 @@ columns = CA.columns[0:15]
 
 feature_columns = [tf.contrib.layers.real_valued_column(k) for k in columns]
 
-classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,hidden_units=[10,20,10],n_classes = 2)
+classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,hidden_units=[10,20,10],n_classes = 2 )
 
 classifier.fit(input_fn=lambda: input_fn(X_train,y_train),steps = 2000)
 
