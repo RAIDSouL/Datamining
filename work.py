@@ -10,7 +10,7 @@ def input_fn(df,labels):
     label = tf.constant(labels.values, shape = [labels.size,1])
     return feature_cols,label
 
-CA = pd.read_csv("../DATAMINING/temp.csv")
+CA = pd.read_csv("../DATAMINING/cut.csv")
 # print(CA)
 
 # print(CA.shape)

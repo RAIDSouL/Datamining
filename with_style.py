@@ -6,7 +6,6 @@ import tensorflow as tf
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-
 import os
 
 def input_fn(df,labels):
@@ -35,8 +34,9 @@ df = df.reindex(columns=(['class'] + list([a for a in df.columns if a != 'class'
 x_train, x_test, y_train, y_test = train_test_split(df.iloc[:,1:47], df["class"], test_size=0.1, random_state=30)
 
 columns = df.columns[1:47]
-
+# Specify that all features have real-value data
 feature_columns = [tf.contrib.layers.real_valued_column(k) for k in columns]
+# Build 2 layer DNN with 20, 20 units respectively.
 classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,hidden_units=[20,20],n_classes = 2
     # ,optimizer=tf.train.ProximalAdagradOptimizer(
     #         learning_rate=0.5,
