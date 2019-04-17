@@ -30,14 +30,11 @@ df = pd.get_dummies(df, columns=header[11:13])
 
 df = df.reindex(columns=(['class'] + list([a for a in df.columns if a != 'class']) ))
 
-# print(df.shape[1])
 x_train, x_test, y_train, y_test = train_test_split(df.iloc[:,1:47], df["class"], test_size=0.1, random_state=30)
 
 columns = df.columns[1:47]
-# print(df['num1'])
 
 feature_columns = [tf.contrib.layers.real_valued_column(k) for k in columns]
-# tf.contrib.estimator.binary_classification_head
 classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,hidden_units=[20,20],n_classes = 2
     # ,optimizer=tf.train.ProximalAdagradOptimizer(
     #         learning_rate=0.5,
