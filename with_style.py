@@ -17,6 +17,8 @@ def input_fn(df,labels):
 header = ['cat1','num1','num2','cat2','cat3','cat4','cat5','num3','cat6','cat7','num4','cat8','cat9','num5','num6','class']
 df = pd.read_csv("../DATAMINING/crx.dataFixed.csv", names=header)
 
+# Entries with a '?' indicate a missing piece of data, and
+# these entries are dropped from our dataset.
 # df.replace('?', np.nan, inplace=True)
 # df.dropna(inplace=True)
 
