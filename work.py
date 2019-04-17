@@ -32,7 +32,7 @@ CA["Class"] = CA["Class"].map({"+" : 0 , "-" : 1})
 CA.iloc[:,0:15] = CA.iloc[:,0:15].astype(np.float64)
 # print(CA.dtypes)
 
-X_train, X_test, y_train, y_test = train_test_split(CA.iloc[:,0:15], CA["Class"], test_size=0.1, random_state=50)
+X_train, X_test, y_train, y_test = train_test_split(CA.iloc[:,0:15], CA["Class"], test_size=0.2, random_state=50)
 
 # print(X_train.shape)
 # print(X_test.shape)
@@ -46,7 +46,7 @@ columns = CA.columns[0:15]
 
 feature_columns = [tf.contrib.layers.real_valued_column(k) for k in columns]
 
-classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,hidden_units=[10,20,10],n_classes = 2 )
+classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,hidden_units=[10],n_classes = 2 )
 
 classifier.fit(input_fn=lambda: input_fn(X_train,y_train),steps = 2000)
 
